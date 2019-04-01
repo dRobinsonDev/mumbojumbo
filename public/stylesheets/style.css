@@ -1,8 +1,72 @@
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
+@import url('https://fonts.googleapis.com/css?family=Sigmar+One');
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 0.925em;
+  font: 24px 'Permanent Marker', cursive;
+  margin: 0 auto;
+  height: 100vh;
+  background-color: lightblue;
 }
 
 a {
   color: #00B7FF;
+}
+
+.flex {
+  display: flex;
+}
+
+.flexCol {
+  flex-flow: column nowrap;
+  /* justify-content: center; */
+  align-items: center;
+}
+#container {
+  width: 90%;
+}
+#container > h1:nth-child(1) {
+  text-align: center;
+}
+
+/* Modal */
+#modal {
+  text-align: center;
+  
+}
+#modal button#startGame {
+  border: 0.125em solid black;
+  font-size: 1.7em;
+  box-shadow: 0.25em 0.25em 0.0625em black;
+}
+
+/*  Game */
+#game {
+  width: 100%;
+}
+#dashboard {
+  width: 100%;
+  justify-content: space-around;
+}
+
+#gameBoard {
+  position: relative;
+  top: 2em;
+}
+#scrambled {
+  margin: 0;
+  height: 1.75em;
+  letter-spacing: 0.5em;
+  text-align: center;
+  padding-top: 0.2em;
+}
+input {
+  background-color: lightgray;
+  font-size: 2em;
+  padding-bottom: 0.3em;
+}
+button {
+  border: 0.125em solid black;
+  font-size: 2em;
+  box-shadow: 0.25em 0.25em 0.0625em black;
 }
