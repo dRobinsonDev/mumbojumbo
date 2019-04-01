@@ -1,0 +1,50 @@
+agile
+algorithm
+api
+application
+adaptive design
+bootstrap
+backend
+browser
+bug
+cache
+code
+css
+data structures
+debugging
+deployment
+documentation
+frameworks
+frontend
+full-stack
+get_digitgithub
+truncatechars_htmlhttp
+information architecture
+java
+javascript
+jquery
+languages
+libraries
+minification
+mobile-first
+mvp
+mysql
+operating system
+php
+plugin
+python
+resolution
+rsponsive designruby
+ruby on rails
+sitemap
+software stackssl
+text editor
+ui design
+ux designversion control
+web application
+wireframe
+bandwidth
+domain name
+domain name service
+e-commerce
+file transfer protocol

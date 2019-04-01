@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 module.exports = {
     index,
     modal,
@@ -6,10 +8,13 @@ module.exports = {
 
 
 function index(req, res, next) {
+    // data = fs.readFile('terminology.txt', (data) => data);
+    // console.log(data);
     res.render('index', { title: 'Mumbo Jumbo' });
 }
 
 function game(req,res,next) {
+
     res.render('partials/game', {});
 }
 
