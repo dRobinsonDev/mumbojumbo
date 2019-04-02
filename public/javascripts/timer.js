@@ -1,5 +1,7 @@
 let runTime = null;
+
 let clockTime = {
+
     start: function(time = this.time) {
         var count = 0;
         if (!runTime) {
@@ -12,6 +14,7 @@ let clockTime = {
         }
         update();
     },
+
     stop: function(time) {
         clearInterval(runTime);
         if (time) {
@@ -25,10 +28,12 @@ let clockTime = {
         timer = null;
         runTime = null;
     },
+
     reset: function() {
         this.time = 120;
         this.stop();
     },
+    
     render: function() {
         if (this.time > 0) {
             let min = Math.floor(this.time / 60);

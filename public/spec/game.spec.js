@@ -1,4 +1,13 @@
 
+describe("Initialize data variables", () => {
+    it("Returns Array", () => {
+        Game.init();
+        expect(Game.one).toEqual(undefined);
+    });
+    it("Returns non-empty array", () => {
+        expect(Game.one).not.toEqual(0);
+    });
+});
 describe("Grab list of words", () => {
     let data = ["hello"];
     it("Returns Array", () => {
@@ -11,15 +20,8 @@ describe("Grab list of words", () => {
 
 describe("Scramble the  words", () => {
     it ('Returns scrambled word',  () => {
-         expect(scramble("hello")).not.toEqual("hello");
-         expect(scramble("operating system")).not.toEqual("operating system");
+         expect(Game.scramble("hello")).not.toEqual("hello");
+         expect(Game.scramble("operating system")).not.toEqual("operating system");
     });
 });
 
-// unneccessary test
-// describe("Scrambles array of words", () => {
-//     it ('Returns scrambled array',  () => {
-//         let arrayList = ["hello", "array", "split"];
-//          expect(scrambleList(arrayList).toString()).not.toEqual(arrayList);
-//     });
-// });

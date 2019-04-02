@@ -1,48 +1,49 @@
 const Game = {
     running: false,
     score: 0,
-    // clock: clockTime,
+    clock: clockTime,
     wrongGuesses: 0,
     wordList: null,
-    rightWords: 0,
-    wrongWords: 0,
-    data: []
+    rightWords: null,
+    wrongWords: null,
+    data: null,
+    init: async () => {
+        await Game.getList();
+        Game.one = true;
+    }
 }
 
-const  init = async () => {
-    getList();
-}
-
- const getList =  async () => {
-   return tempData = await $.get('/wordList').then(data => {
+Game.getList =  async () => {
+    return tempData = await $.get('/wordList').then(data => {
         Game.data = data;
         return Game.data;
     });
 }
 
-const scramble = (word) => {
+Game.scramble = (word) => {
     let tmp = word;
     let arr = [];
     if (tmp.indexOf(' ') !== -1) {
         arr = tmp.split(' ');
         for (var i = 0; i < arr.length; i++) {
-            arr[i] = randomize(arr[i]);
+            arr[i] = Game.randomize(arr[i]);
         }
         return arr.join(' ');
     }
-    tmp = randomize(tmp);
+    tmp = Game.randomize(tmp);
     while (tmp === word) {
-        tmp = randomize(tmp);
+        tmp = Game.randomize(tmp);
     }
     return tmp;
 }
 
-const randomize = (tmp) => {
-    let flag = true;
-    let len = tmp.length;
-    let word = tmp;
-    if (typeof tmp === 'string') {
-        tmp = tmp.split('');
+Game.randomize = (tmp) => {
+    let flag = true,
+        len = tmp.length,
+        word = tmp;
+
+    if (typeof tmp === 'string') {  // if argument is string split to randomize characters 
+        tmp = tmp.split('');        // and set flag to false to avoid array scrambling
         flag = false;
     } 
     for (let i = len - 1; i > 0; i--) {
@@ -50,17 +51,17 @@ const randomize = (tmp) => {
         [tmp[i], tmp[r]] = [tmp[r],tmp[i]];
     }
     if ( !flag && tmp.join('') === word) {
-        randomize(tmp.join(''));
+        Game.randomize(tmp.join(''));
     } 
     return flag ? tmp : tmp.join('')
 }
 
-const scrambleList = (list) => {
+Game.scrambleList = (list) => {
     let tmp = list;
-    tmp = randomize(list);
+    tmp = Game.randomize(list);
     return tmp;
 }
 
-const update = () => {
+Game.update = () => {
 
 }
