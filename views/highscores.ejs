@@ -1,0 +1,28 @@
+<%- include partials/header.ejs %>
+
+<div class="table-wrapper">
+    <% if (highscores.length > 0) {%>
+        <table class="table table-hovered">
+            <thead class="thead-dark flex">
+                <tr class="trHead">
+                    <th scope="col">Rank</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Score</th>
+                    <th scope="col">Words Wrong</th>
+                </tr>
+            </thead>
+            <tbody class="flex flexCol">
+                <% highscores.forEach((score, index) => { %>
+                    <tr class="trHead flex">
+                        <td># <%= index + 1 %></td>
+                        <td><%= score.name %></td>
+                        <td><%= score.score %></td>
+                        <td><%= score.wrong %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <p class="center">No High Scores found. Now is your chance</p>
+    <% } %>
+<%- include partials/footer.ejs %>

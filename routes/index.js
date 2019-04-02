@@ -5,6 +5,8 @@ const indexController = require('../controllers/indexController');
 /* GET home page. */
 router.get('/', indexController.index);
 router.get('/game', indexController.game);
+router.get('/getHighscores', indexController.getHighscores);
+router.get('/highscores', indexController.highscores);
 router.get('/modal', indexController.modal);
 router.get('/wordList', indexController.wordList);
 router.get('/test', indexController.runTests);

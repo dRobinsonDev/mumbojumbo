@@ -19,8 +19,10 @@ a {
 
 .flexCol {
   flex-flow: column nowrap;
-  /* justify-content: center; */
   align-items: center;
+}
+.center {
+  text-align: center;
 }
 #container {
   width: 90%;
@@ -69,4 +71,24 @@ button {
   border: 0.125em solid black;
   font-size: 2em;
   box-shadow: 0.25em 0.25em 0.0625em black;
+}
+
+/*  High scores */
+.table-wrapper, thead, thead > tr {
+  width: 100%;
+}
+table {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+  width: 100%;
+}
+tr {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+td, tr th {
+  text-align: center;
+  width: 166px;
 }

@@ -23,7 +23,7 @@ let clockTime = {
         }
         if (this.time === 0) {
             this.time = "TIME'S UP";
-            gameOver();
+            Game.gameOver();
         }
         timer = null;
         runTime = null;
@@ -41,11 +41,15 @@ let clockTime = {
             if (sec < 10) {
                 sec = `0${sec}`;
             }
-            Game.timerEl.textContent = `${min}:${sec}`;
+            if (Game.timerEl) {
+                Game.timerEl.textContent = `${min}:${sec}`;
+            }
         } else {
-            Game.timerEl.style.color = 'red';
-            Game.timerEl.textContent = this.time;
+            if (Game.timerEl) {
+                Game.timerEl.style.color = 'red';
+                Game.timerEl.textContent = this.time;
+            }
         }
     },
-    time: 120
+    time: 2
 }
