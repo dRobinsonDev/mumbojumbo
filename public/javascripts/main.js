@@ -4,6 +4,7 @@ $(document).ready( () => {
 })
 
 $(document).on('click', '#startGame', showModal);
+
 $(document).on('submit', 'form', (e) => {
     e.preventDefault()
 });

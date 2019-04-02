@@ -6,5 +6,7 @@ const indexController = require('../controllers/indexController');
 router.get('/', indexController.index);
 router.get('/game', indexController.game);
 router.get('/modal', indexController.modal);
+router.get('/wordList', indexController.wordList);
+router.get('/test', indexController.runTests);
 
 module.exports = router;
