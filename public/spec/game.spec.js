@@ -1,12 +1,12 @@
 
 describe("Initialize data variables", () => {
-    it("Returns Array", () => {
-        Game.init();
-        expect(Game.one).toEqual(undefined);
+    it("Returns number for right guesses", () => {
+        expect(Game.rightWords).toEqual(0);
     });
     it("Returns non-empty array", () => {
-        expect(Game.one).not.toEqual(0);
+        expect(Game.data).not.toEqual(null);
     });
+
 });
 describe("Grab list of words", () => {
     let data = ["hello"];
@@ -24,4 +24,11 @@ describe("Scramble the  words", () => {
          expect(Game.scramble("operating system")).not.toEqual("operating system");
     });
 });
+
+describe("Game timer initializes", () => {
+    it('Checks if Game timer works', () => {
+        let timer = clockTime;
+        expect(timer).toEqual(jasmine.any(Object));
+    })
+})
 

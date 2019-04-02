@@ -11,5 +11,11 @@ $(document).on('submit', 'form', (e) => {
 
 function showModal() {   
      $('#modal').hide();
-     $('#game').show(2000);
+     $('#game').show(2000, () =>  {
+        $( "#scrambled" ).hide().text( "helldjd" ).show(2000, () => {
+            console.log()
+            Game.init();
+        });
+      });
+     
 }

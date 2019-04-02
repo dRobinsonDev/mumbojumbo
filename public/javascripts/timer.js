@@ -12,7 +12,7 @@ let clockTime = {
                 this.render();
             },1000);
         }
-        update();
+        Game.update();
     },
 
     stop: function(time) {
@@ -33,7 +33,7 @@ let clockTime = {
         this.time = 120;
         this.stop();
     },
-    
+
     render: function() {
         if (this.time > 0) {
             let min = Math.floor(this.time / 60);
@@ -41,10 +41,10 @@ let clockTime = {
             if (sec < 10) {
                 sec = `0${sec}`;
             }
-            timerEl.textContent = `${min}:${sec}`;
+            Game.timerEl.textContent = `${min}:${sec}`;
         } else {
-            timerEl.style.color = 'red';
-            timerEl.textContent = this.time;
+            Game.timerEl.style.color = 'red';
+            Game.timerEl.textContent = this.time;
         }
     },
     time: 120

@@ -1,7 +1,7 @@
 const Game = {
     running: false,
     score: 0,
-    clock: clockTime,
+    timer: null,
     wrongGuesses: 0,
     wordList: null,
     rightWords: null,
@@ -9,13 +9,28 @@ const Game = {
     data: null,
     init: async () => {
         await Game.getList();
-        Game.one = true;
+        Game.running = true;
+        Game.timerEl = document.querySelector('#timer');
+        Game.rightWords = 0;
+        Game.wrongWords = 0;
+        Game.wordList = [];
+        Game.timer = clockTime;
+        Game.timer.start();
+        Game.data = new Stack();
+
     }
 }
-
 Game.getList =  async () => {
     return tempData = await $.get('/wordList').then(data => {
-        Game.data = data;
+        console.log(data);
+        data = Game.scrambleList(data);
+        Game.data = hi;
+
+        // TODO
+        // push items into stack
+
+
+        console.log(Game.data);
         return Game.data;
     });
 }
