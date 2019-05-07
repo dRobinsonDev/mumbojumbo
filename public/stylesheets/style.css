@@ -74,6 +74,9 @@ button {
 }
 
 /*  High scores */
+.table-wrapper {
+  margin-top: 2em;
+}
 .table-wrapper, thead, thead > tr {
   width: 100%;
 }

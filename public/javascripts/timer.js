@@ -1,7 +1,6 @@
 let runTime = null;
 
 let clockTime = {
-
     start: function(time = this.time) {
         var count = 0;
         if (!runTime) {
@@ -12,7 +11,7 @@ let clockTime = {
                 this.render();
             },1000);
         }
-        Game.update();
+        Game.updateClock();
     },
 
     stop: function(time) {
@@ -51,5 +50,5 @@ let clockTime = {
             }
         }
     },
-    time: 2
+    time: 120
 }

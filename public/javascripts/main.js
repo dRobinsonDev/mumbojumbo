@@ -29,8 +29,8 @@ function showModal() {
      $('#game').show(2000, () =>  {
         $("#scrambled" ).hide().show(2000, () => {
             $("#scrambled" ).text(Game.scrambledWord);
+            Game.init();
         });
-        Game.init();
       });
      
 }

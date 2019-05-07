@@ -15,7 +15,7 @@ const Game = {
             Game.timerEl = document.querySelector('#timer');
         }
         Game.rightWords = 0;
-        Game.wrongWords = 0;
+        Game.wrongWords = [];
         Game.wordList = [];
         Game.timer = clockTime;
         await Game.getList();
@@ -29,6 +29,11 @@ const Game = {
         }
         $('#score').text(Game.rightWords);
         $('#scrambled').text(Game.scrambledWord);
+        Game.timer.start();
+        Game.updateClock();
+    },
+    updateClock: () => {
+        // Game.timer.start();
     }
 }
 
@@ -87,12 +92,9 @@ Game.scrambleList = (list) => {
 
 Game.getWord = () => {
         Game.curWord = Game.words.pop();
-        console.log(`before: ${Game.curWord}`)
         Game.scrambledWord = Game.scramble(Game.curWord);
-        console.log(`after: ${Game.curWord}`)
         return Game.scrambledWord;
 }
-
 
 Game.gameOver = async () => {
     Game.running = false;
@@ -101,16 +103,14 @@ Game.gameOver = async () => {
     $('#guessButton').attr('disabled','true');
     
     let userScore = Game.score;
-    let userWrong = Game.wrongWords;
+    let userWrong = Game.wrongWords.length;
 
      highscores = await $.get(`/getHighscores?name=${Game.userName}&score=${userScore}&wrong=${userWrong}`).then(data => {
-        console.log("data", data);
         return data;
-        });
-        console.log("highscores", highscores);
+    });
+    window.location.href= "highscores";
 }
 Game.checkGuess = (guess) => {
-    console.log(`Guess: ${guess} \n curWord: ${Game.curWord}`);
 
     if (guess.toLowerCase() === Game.curWord) {
         Game.rightWords++;
@@ -121,8 +121,8 @@ Game.checkGuess = (guess) => {
     } else {
         Game.wrongGuesses += 1;
         if (Game.wrongGuesses >= 3) {
+            Game.wrongWords.push(Game.curWord); // place wrong words in list and count from there
             Game.curWord = null;
-            game.wrongWords++;
             Game.update();
             Game.wrongGuesses = 0;
         }

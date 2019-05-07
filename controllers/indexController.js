@@ -1,5 +1,5 @@
 const fs = require('fs');
-
+//  refactor highscores and gethighscores to abstract out query
 module.exports = {
     index,
     game,
@@ -9,7 +9,6 @@ module.exports = {
     runTests,
     wordList
 }
-
 
 function index(req, res, next) {
     res.render('index', { title: 'Mumbo Jumbo' });
@@ -25,26 +24,30 @@ function getHighscores(req,res,next) {
         if (err) {
             res.redirect('/');
         }
-        if (result[result.length -1].score < req.query.score) {
-            let {name, score, wrong} = req.query; // destructure url query
-            let query = `INSERT INTO highscores (name, score, wrong) VALUES (${name}, ${score}, ${wrong});`
+        let {name, score, wrong} = req.query; // destructure url query
+        if (result[result.length -1].score < score) {
+            let query2 = "INSERT INTO `highscores` (name, score, wrong) VALUES ( '"+ name + "', " +  score + ", "  + wrong +")";
+            db.query(query2, (err, result1) => {
+                if (err) {
+                    res.redirect('/');
+                }
+                return result1;
+            });
         }
-        return result
     });
-    return result;
+    return res.redirect('/highscores');
 }
 function highscores(req,res,next) {
     let query = "SELECT * FROM `highscores` ORDER BY `score` DESC limit 10"; // query database to get all the players
-
     // execute query
     db.query(query, (err, result) => {
         if (err) {
             res.redirect('/');
         }
-        console.log(result);
         return res.render('highscores', {title: 'High Scores', highscores: result})
     });
 }
+
 function modal(req,res,next) {
     res.render('partials/modal', {});
 }

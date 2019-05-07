@@ -4,18 +4,13 @@ const path = require('path');
 const logger = require('morgan');
 const mysql = require('mysql');
 
-const db = mysql.createConnection ({
-  host: 'db4free.net',
-  user: 'mumbojumbo',
-  password: 'mumbojumbo',
-  database: 'mumbojumbo'
-});
+require('dotenv').config()
 
-db.connect((err) => {
-  if (err) {
-      throw err;
-  }
-  console.log('Connected to database');
+const db = mysql.createConnection ({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME
 });
 
 global.db = db;
@@ -49,6 +44,12 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+const port = process.env.PORT || 3001;
+
+app.listen(port, function(){
+    console.log(`Express app running on port ${port}`);
 });
 
 module.exports = app;
