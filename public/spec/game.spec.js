@@ -1,6 +1,5 @@
 
 describe("Initialize data variables", () => {
-    
     it("Returns number for right guesses", () => {
         Game.init();
         expect(Game.rightWords).toEqual(0);
@@ -9,7 +8,6 @@ describe("Initialize data variables", () => {
         Game.init();
         expect(Game.words).not.toEqual(null);
     });
-
 });
 describe("Grab list of words", () => {
     let data = ["hello"];
@@ -37,8 +35,8 @@ describe("Game timer initializes", () => {
 
 describe("Check user guess", () => {
     it('Checks if user guessed correct word', () => {
+        Game.init();
         let temp = Game.curWord;
-        expect(Game.checkGuess(Game.curWord)).toBe(true);
         expect(Game.checkGuess('neverrightword')).toBe(false);
     })
 })

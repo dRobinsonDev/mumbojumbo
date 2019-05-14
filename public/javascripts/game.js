@@ -111,20 +111,24 @@ Game.gameOver = async () => {
     window.location.href= "highscores";
 }
 Game.checkGuess = (guess) => {
-
-    if (guess.toLowerCase() === Game.curWord) {
-        Game.rightWords++;
-        Game.wrongGuesses = 0;
-        Game.curWord = null;
-        Game.update();
-        return true;
-    } else {
-        Game.wrongGuesses += 1;
-        if (Game.wrongGuesses >= 3) {
-            Game.wrongWords.push(Game.curWord); // place wrong words in list and count from there
+    if (guess) {
+        if (!Game.curWord) {
+            Game.getWord();
+        }
+        if (guess.toLowerCase() === Game.curWord) {
+            Game.rightWords++;
+            Game.wrongGuesses = 0;
             Game.curWord = null;
             Game.update();
-            Game.wrongGuesses = 0;
+            return true;
+        } else {
+            Game.wrongGuesses += 1;
+            if (Game.wrongGuesses >= 3) {
+                Game.wrongWords.push(Game.curWord); // place wrong words in list and count from there
+                Game.curWord = null;
+                Game.update();
+                Game.wrongGuesses = 0;
+            }
         }
     }
     return false;
